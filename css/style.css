@@ -1,53 +1,112 @@
-.header {
-    border: 3px solid orangered;
-    margin-bottom: 5px;
+header {
+    border: 2px solid orange;
     text-align: center;
+    grid-area: hd;
 }
-
+ 
+.main {
+    display: grid;
+    grid-template-areas:
+        'hd '
+        'lb'
+        'mn '
+        'rb'
+        'ft'
+    ;
+}
+ 
 .left-sidebar {
-    display: none;
-    border: 3px solid orangered;
-    text-align: center;
+    grid-area: lb;
 }
-
+ 
 .right-sidebar {
-    border: 3px solid orangered;
-    text-align: center;
+    grid-area: rb;
 }
-
+ 
+ 
 .listing {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     list-style: none;
     gap: 10px;
+    grid-area: mn;
+    margin: 0;
+    padding: 0;
+    /* justify-content: center; */
 }
-
+ 
 .listing li {
     border: 2px solid orange;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+ 
 }
-
+ 
 .listing li h2 {
     background-color: orange;
     color: white;
     text-align: center;
     padding: 10px;
 }
-
-.listing .cta a {
+ 
+.listing .cta {
     margin-top: auto;
     border-top: 2px solid orange;
-    font-size: 30px;
-    color: orange;
+    padding: 10px;
+    text-align: center;
 }
-
+ 
+.listing .cta a {
+    text-decoration: none;
+    color: orange;
+    font-size: 30px;
+}
+ 
 .listing .body {
     padding: 10px;
 }
-
-.footer {
-    border: 3px solid orangered;
+ 
+.box {
+    border: 2px solid orange;
     text-align: center;
+    padding: 10px;
+}
+ 
+.footer {
+    border: 2px solid orange;
+    text-align: center;
+    padding: 10px;
+    grid-area: ft;
+}
+ 
+@media screen and (min-width:768px) {
+    .main {
+        grid-template-areas:
+            'hd hd'
+            'lb mn'
+            'lb mn'
+            'mn rb'
+            'ft ft'
+        ;
+    }
+ 
+    .right-sidebar {
+        display: hidden;
+    }
+}
+ 
+@media screen and (min-width:1280px) {
+    .main {
+        grid-template-areas:
+            'hd hd hd'
+            'lb mn rb'
+            'lb mn rb'
+            'ft ft ft'
+        ;
+    }
+ 
+    .right-sidebar {
+        display: block;
+    }
 }
